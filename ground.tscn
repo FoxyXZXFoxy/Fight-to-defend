@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://40hwuig4gpp8"]
+
+[ext_resource type="Texture2D" uid="uid://cdba88dowbuo" path="res://assets/horizontal bars/least rounded/progress bar least rounded under.png" id="1_yh8r4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7tip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yh8r4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv015"]
+size = Vector2(558, 40)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 21)
+scale = Vector2(18.625, 6.75)
+sprite_frames = SubResource("SpriteFrames_t7tip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(280, 21)
+shape = SubResource("RectangleShape2D_tv015")
