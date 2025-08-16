@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7cml6yevcelg"]
 
-[ext_resource type="PackedScene" uid="uid://40hwuig4gpp8" path="res://Sceens/ground.tscn" id="1_5mw4j"]
-[ext_resource type="PackedScene" uid="uid://cctsndadiehjt" path="res://Sceens/meow_player.tscn" id="2_s5yrx"]
+[ext_resource type="PackedScene" uid="uid://40hwuig4gpp8" path="res://Szenen/ground.tscn" id="1_5mw4j"]
+[ext_resource type="PackedScene" uid="uid://cctsndadiehjt" path="res://Szenen/meow_player.tscn" id="2_s5yrx"]
+
 
 
 [node name="meows_testworld" type="Node2D"]

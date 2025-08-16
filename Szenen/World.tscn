@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=4 uid="uid://dbvefm64k6oep"]
 
-[ext_resource type="PackedScene" uid="uid://du8g2kxsynsku" path="res://Sceens/Player_Foxy.tscn" id="1_c6gwx"]
+[ext_resource type="PackedScene" uid="uid://du8g2kxsynsku" path="res://Szenen/Player_Foxy.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://decpwevt0etv7" path="res://Scripts/game_manager.gd" id="1_p1v5b"]
 [ext_resource type="Texture2D" uid="uid://ceooi57bebapm" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_2dftf"]
-[ext_resource type="PackedScene" uid="uid://drvc0a7c61lor" path="res://Sceens/platform.tscn" id="2_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://ctodkclvwy8u8" path="res://Sceens/coin.tscn" id="4_js7pq"]
-[ext_resource type="PackedScene" uid="uid://tlu83xxyije2" path="res://Sceens/killzone.tscn" id="5_eu7l1"]
+[ext_resource type="PackedScene" uid="uid://drvc0a7c61lor" path="res://Szenen/platform.tscn" id="2_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://ctodkclvwy8u8" path="res://Szenen/coin.tscn" id="4_js7pq"]
+[ext_resource type="PackedScene" uid="uid://tlu83xxyije2" path="res://Szenen/killzone.tscn" id="5_eu7l1"]
 
 [sub_resource type="GDScript" id="GDScript_p1v5b"]
 script/source = "extends Node2D
