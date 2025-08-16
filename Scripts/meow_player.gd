@@ -2,53 +2,63 @@ extends CharacterBody2D
 
 @onready var sprite = $"AnimatedSprite2D"
 
-var weight = 300
-var speed = 200
+var weight = 500
+var speed = 1000
 var in_air = false
+var kenetic_power: Vector2
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	
+	if !is_multiplayer_authority(): return
 	movement()
 	gravity()
+	kenetic()
 	move_and_slide()
 
 func gravity():
 	if not is_on_floor():
 		in_air = true
-		if is_nan(velocity.y) or velocity.y == 0:
-			velocity.y = 1
-		velocity.y = velocity.y*(weight/velocity.y)
+		if sprite.animation == "Jump":
+			sprite.play("Jump")
+			sprite.frame = 4
+		if velocity.y < weight:
+			velocity.y += weight/5
 	if is_on_floor() and in_air:
 		sprite.play("land")
 		in_air = false
+
 func movement():
-	if Input.is_action_pressed("right"):
+	var action = false
+	if Input.is_action_pressed("Foxy_right"):
 		go_right()
-	elif Input.is_action_pressed("left"):
+		action = true
+	if Input.is_action_pressed("Foxy_left"):
 		go_left()
-	elif Input.is_action_pressed("up"):
+		action = true
+	if Input.is_action_pressed("Foxy_Jump"):
 		jump()
-	else:
+		action = true
+	if not action:
 		do_default()
 
 func go_right():
 	sprite.flip_h = false
 	sprite.animation = "walk"
 	if in_air: return
-	if is_nan(velocity.x) or velocity.x == 0:
-		velocity.x = 1
-	velocity.x = velocity.x*(speed/velocity.x)
+	if velocity.x < speed:
+		velocity.x = speed/5 
 
 func go_left():
 	sprite.flip_h = true
 	sprite.animation = "walk"
 	if in_air: return
-	if is_nan(velocity.x) or velocity.x == 0:
-		velocity.x = -1
-	velocity.x = -velocity.x*(speed/velocity.x)
+	if velocity.x > -speed:
+		velocity.x = -speed/5
 
 func do_default():
 	if in_air: return
@@ -58,5 +68,10 @@ func do_default():
 func jump():
 	if is_on_floor():
 		sprite.play("Jump")
-		velocity.y = -speed*100
+		sprite.frame = 4
+		kenetic_power.y = -speed*3
 		in_air = true
+
+func kenetic():
+	velocity += kenetic_power/10
+	kenetic_power = kenetic_power - kenetic_power/10

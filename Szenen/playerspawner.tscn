@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0ydof5ug217l"]
+
+[ext_resource type="Script" uid="uid://cjo47kexv55jn" path="res://Scripts/playerspawner.gd" id="1_k1i5h"]
+
+[node name="playerspawner" type="Node2D"]
+script = ExtResource("1_k1i5h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="meow" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "mewo"
+
+[node name="foxy" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "foxy
+"
+
+[connection signal="pressed" from="Control/VBoxContainer/meow" to="." method="_on_meow_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/foxy" to="." method="_on_foxy_pressed"]
