@@ -15,6 +15,10 @@ run/main_scene="uid://dbvefm64k6oep"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LocalNetHandeler="*res://Scripts/local_net_handeler.gd"
+
 [input]
 
 Foxy_Jump={

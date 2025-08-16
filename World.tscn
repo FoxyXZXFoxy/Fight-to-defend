@@ -1,37 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://dbvefm64k6oep"]
+[gd_scene load_steps=16 format=4 uid="uid://dbvefm64k6oep"]
 
-[ext_resource type="PackedScene" uid="uid://du8g2kxsynsku" path="res://Player_Foxy.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://decpwevt0etv7" path="res://Scripts/game_manager.gd" id="1_p1v5b"]
 [ext_resource type="Texture2D" uid="uid://ceooi57bebapm" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_2dftf"]
-[ext_resource type="PackedScene" uid="uid://drvc0a7c61lor" path="res://platform.tscn" id="2_bcbcq"]
-[ext_resource type="PackedScene" uid="uid://ctodkclvwy8u8" path="res://coin.tscn" id="4_js7pq"]
-[ext_resource type="PackedScene" uid="uid://tlu83xxyije2" path="res://killzone.tscn" id="5_eu7l1"]
-
-[sub_resource type="GDScript" id="GDScript_p1v5b"]
-script/source = "extends Node2D
-
-
-var peer = ENetMultiplayerPeer.new()
-@export var player_scene: PackedScene
-
-
-func _on_host_pressed() -> void:
-	peer.create_server_(9012)
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_add_player)
-	_add_payer()
-
-func _add_player(id = 1):
-	var player = player_secene.instantiate()
-	player.name = str(id)
-	call_deferred(\"add_child\",player)
-	
-	
-
-func _on_join_pressed() -> void:
-	peer.create_client(\"localhost\", 9012)
-	multiplayer.multiplayer_peer = peer
-"
+[ext_resource type="PackedScene" uid="uid://drvc0a7c61lor" path="res://Szenen/platform.tscn" id="2_bcbcq"]
+[ext_resource type="PackedScene" uid="uid://ctodkclvwy8u8" path="res://Szenen/coin.tscn" id="4_js7pq"]
+[ext_resource type="PackedScene" uid="uid://tlu83xxyije2" path="res://Szenen/killzone.tscn" id="5_eu7l1"]
+[ext_resource type="Script" uid="uid://dowyp5bechv3x" path="res://Scripts/multiplayer_spawner.gd" id="6_wygdx"]
+[ext_resource type="PackedScene" uid="uid://p37taagknovv" path="res://Szenen/control.tscn" id="7_bah7m"]
+[ext_resource type="PackedScene" uid="uid://cctsndadiehjt" path="res://Szenen/meow_player.tscn" id="7_fv4w7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c6gwx"]
 
@@ -199,6 +175,21 @@ texture = ExtResource("2_2dftf")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bcbcq")
 
+[sub_resource type="Animation" id="Animation_js7pq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(58, -37)]
+}
+
 [sub_resource type="Animation" id="Animation_bcbcq"]
 resource_name = "move"
 length = 1.5
@@ -216,21 +207,6 @@ tracks/0/keys = {
 "values": [Vector2(58, -37), Vector2(-14, -37)]
 }
 
-[sub_resource type="Animation" id="Animation_js7pq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(58, -37)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eu7l1"]
 _data = {
 &"RESET": SubResource("Animation_js7pq"),
@@ -240,21 +216,10 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p1v5b"]
 
 [node name="World" type="Node2D"]
-script = SubResource("GDScript_p1v5b")
-player_scene = ExtResource("1_c6gwx")
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_p1v5b")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_c6gwx")]
-position = Vector2(21, -3)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(0, -8)
-zoom = Vector2(4, 4)
-limit_bottom = 140
-limit_smoothed = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 113)
@@ -297,3 +262,10 @@ position = Vector2(114, -47)
 position = Vector2(107, -56)
 
 [node name="Platforms" type="Node" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://cctsndadiehjt")
+script = ExtResource("6_wygdx")
+network_player = ExtResource("7_fv4w7")
+
+[node name="Control" parent="." instance=ExtResource("7_bah7m")]

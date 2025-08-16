@@ -1,90 +1,90 @@
-[gd_scene load_steps=26 format=3 uid="uid://du8g2kxsynsku"]
+[gd_scene load_steps=27 format=3 uid="uid://du8g2kxsynsku"]
 
-[ext_resource type="Texture2D" uid="uid://de1luhn0c0400" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_0453r"]
-[ext_resource type="Script" uid="uid://cektll0c74by" path="res://Scripts/player_foxy.gd" id="1_rg2vt"]
+[ext_resource type="Script" uid="uid://cektll0c74by" path="res://Scripts/player_foxy.gd" id="1_y4b7p"]
+[ext_resource type="Texture2D" uid="uid://de1luhn0c0400" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="2_kv17h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rg2vt"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2wdb"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjxef"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hwe5"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sb2ep"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wxu2"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5lpw"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0346"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qddp"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s23tr"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(128, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02f1v"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(160, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kedmh"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(192, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vn6w"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(224, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts8o5"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft5vp"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4jpn"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnmp0"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_suy1m"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(128, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gihv8"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i333b"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(192, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbnpg"]
-atlas = ExtResource("1_0453r")
+atlas = ExtResource("2_kv17h")
 region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sb2ep"]
@@ -172,10 +172,18 @@ animations = [{
 radius = 4.0
 height = 14.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rg2vt"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
-script = ExtResource("1_rg2vt")
+script = ExtResource("1_y4b7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -186,3 +194,8 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_5wxu2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rg2vt")
