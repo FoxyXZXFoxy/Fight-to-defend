@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://dbvefm64k6oep"]
+[gd_scene load_steps=19 format=4 uid="uid://dbvefm64k6oep"]
 
 [ext_resource type="PackedScene" uid="uid://du8g2kxsynsku" path="res://Szenen/Player_Foxy.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://decpwevt0etv7" path="res://Scripts/game_manager.gd" id="1_p1v5b"]
 [ext_resource type="Texture2D" uid="uid://ceooi57bebapm" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_2dftf"]
 [ext_resource type="PackedScene" uid="uid://drvc0a7c61lor" path="res://Szenen/platform.tscn" id="2_bcbcq"]
-[ext_resource type="Script" uid="uid://dowyp5bechv3x" path="res://Scripts/multiplayer_spawner.gd" id="2_lohbv"]
-[ext_resource type="PackedScene" uid="uid://p37taagknovv" path="res://Szenen/control.tscn" id="4_3ntni"]
 [ext_resource type="PackedScene" uid="uid://ctodkclvwy8u8" path="res://Szenen/coin.tscn" id="4_js7pq"]
 [ext_resource type="PackedScene" uid="uid://tlu83xxyije2" path="res://Szenen/killzone.tscn" id="5_eu7l1"]
+[ext_resource type="Script" uid="uid://dowyp5bechv3x" path="res://Scripts/multiplayer_spawner.gd" id="6_lohbv"]
+[ext_resource type="PackedScene" uid="uid://p37taagknovv" path="res://Szenen/control.tscn" id="8_3ntni"]
 
 [sub_resource type="GDScript" id="GDScript_p1v5b"]
 script/source = "extends Node2D
@@ -234,6 +234,11 @@ _data = {
 &"move1": SubResource("Animation_3xfym")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lohbv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p1v5b"]
 
 [node name="World" type="Node2D"]
@@ -263,6 +268,9 @@ libraries = {
 }
 autoplay = "move"
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Platform"]
+replication_config = SubResource("SceneReplicationConfig_lohbv")
+
 [node name="Killzone" parent="." instance=ExtResource("5_eu7l1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
@@ -285,10 +293,10 @@ position = Vector2(107, -56)
 
 [node name="Platforms" type="Node" parent="."]
 
-[node name="Control" parent="." instance=ExtResource("4_3ntni")]
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://du8g2kxsynsku")
 spawn_path = NodePath("..")
-script = ExtResource("2_lohbv")
+script = ExtResource("6_lohbv")
 network_player = ExtResource("1_c6gwx")
+
+[node name="Control" parent="." instance=ExtResource("8_3ntni")]

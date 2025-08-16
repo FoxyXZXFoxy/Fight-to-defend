@@ -8,7 +8,7 @@
 [node name="meows_testworld" type="Node2D"]
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_5mw4j")]
-position = Vector2(-260, 125)
+position = Vector2(-233, 95)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://du8g2kxsynsku")
