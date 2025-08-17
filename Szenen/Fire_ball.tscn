@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cbtl6nvye5nd3"]
+[gd_scene load_steps=32 format=3 uid="uid://cbtl6nvye5nd3"]
 
 [ext_resource type="Script" uid="uid://o6m3dk6li5g7" path="res://Scripts/fire_ball.gd" id="1_4uyun"]
 [ext_resource type="Texture2D" uid="uid://cfrfywga1oxyu" path="res://assets/Fire_ball/FB00_nyknck/FB001.png" id="1_jmyus"]
@@ -126,6 +126,16 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4uyun"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7h7i1"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3ac3y"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_4uyun")
 
@@ -142,5 +152,13 @@ shape = SubResource("CircleShape2D_4uyun")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
-[connection signal="area_entered" from="Area2D" to="." method="hit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CircleShape2D_7h7i1")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_3ac3y")
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="hit"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="hit"]
 [connection signal="timeout" from="Timer" to="." method="charge_tick"]

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var charge_timer: Timer = $Timer
 @onready var collshape: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var collshape2: CollisionShape2D = $CollisionShape2D
 
 @export var power: int = 0
 var charging = true
@@ -29,6 +30,7 @@ func _process(delta: float) -> void:
 	if not charging:
 		send_fireball()
 	else: stay()
+	collshape2 = collshape
 
 
 func charge():
