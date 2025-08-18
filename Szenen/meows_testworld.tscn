@@ -1,19 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7cml6yevcelg"]
 
 [ext_resource type="PackedScene" uid="uid://40hwuig4gpp8" path="res://Szenen/ground.tscn" id="1_5mw4j"]
-[ext_resource type="Script" uid="uid://dowyp5bechv3x" path="res://Scripts/multiplayer_spawner.gd" id="3_atdef"]
-[ext_resource type="PackedScene" uid="uid://du8g2kxsynsku" path="res://Szenen/Player_Foxy.tscn" id="3_hpkf5"]
-[ext_resource type="PackedScene" uid="uid://p37taagknovv" path="res://Szenen/control.tscn" id="4_hpkf5"]
+[ext_resource type="Script" uid="uid://dyoo242q0adea" path="res://Scripts/meows_testworld.gd" id="1_o56jg"]
+[ext_resource type="Script" uid="uid://b0s0islrug7kf" path="res://Scripts/multlicam.gd" id="4_deiku"]
+[ext_resource type="PackedScene" uid="uid://ctodkclvwy8u8" path="res://Szenen/coin.tscn" id="4_eewfc"]
 
 [node name="meows_testworld" type="Node2D"]
+script = ExtResource("1_o56jg")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_5mw4j")]
-position = Vector2(-233, 95)
+position = Vector2(-270, 100)
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://du8g2kxsynsku")
-spawn_path = NodePath("..")
-script = ExtResource("3_atdef")
-network_player = ExtResource("3_hpkf5")
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+script = ExtResource("4_deiku")
 
-[node name="Control" parent="." instance=ExtResource("4_hpkf5")]
+[node name="Coin" parent="." groups=["PLAYERS"] instance=ExtResource("4_eewfc")]
+position = Vector2(14, 35)

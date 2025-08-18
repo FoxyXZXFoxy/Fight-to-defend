@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://cctsndadiehjt"]
+[gd_scene load_steps=140 format=3 uid="uid://cctsndadiehjt"]
 
 [ext_resource type="Script" uid="uid://d101rjip2wgnr" path="res://Scripts/meow_player.gd" id="1_nje1d"]
 [ext_resource type="Texture2D" uid="uid://btol7dmflb4ie" path="res://assets/Player_meow/Cat fighter.png" id="2_illol"]
@@ -1047,27 +1047,18 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cpg84"]
-radius = 6.0
+radius = 4.0
+height = 24.0
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hhun0"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["PLAYERS"]]
 script = ExtResource("1_nje1d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -8)
 sprite_frames = SubResource("SpriteFrames_x3l4h")
-animation = &"Jump"
+animation = &"dead"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_cpg84")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_hhun0")

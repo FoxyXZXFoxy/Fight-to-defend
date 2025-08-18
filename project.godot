@@ -17,7 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LocalNetHandeler="*res://Scripts/local_net_handeler.gd"
+LocalNetHandeler="res://Scripts/local_net_handeler.gd"
+
+[global_group]
+
+PLAYERS="all players to use the multicam"
 
 [input]
 

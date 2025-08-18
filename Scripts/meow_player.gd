@@ -6,15 +6,16 @@ var weight = 500
 var speed = 1000
 var in_air = false
 var kenetic_power: Vector2
+@export var dev_id: int
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
-	pass
+	add_to_group("PLAYERS")
 
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority(): return
+	
 	movement()
 	gravity()
 	kenetic()
