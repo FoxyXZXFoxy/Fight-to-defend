@@ -14,9 +14,16 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	add_to_group("PLAYERS")
 
+func _unhandled_input(event: InputEvent) -> void:
+	if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and event.device == dev_id:
+		movement()
+		print("con move: ",dev_id)
+		print(event.device)
+	elif dev_id == -1 and event is InputEventKey:
+		movement()
+		print("tast move: ", dev_id)
+
 func _physics_process(delta: float) -> void:
-	
-	movement()
 	gravity()
 	kenetic()
 	move_and_slide()

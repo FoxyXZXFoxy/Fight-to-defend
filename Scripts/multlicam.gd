@@ -31,7 +31,3 @@ func _process(delta: float) -> void:
 	if max_x > 30:
 		zoom.x = 300/(max_x*3)
 		zoom.y = zoom.x
-
-	print("zoom: ",zoom)
-	print("position: ", position)
-	print("maxes: ", [max_x, max_y])
