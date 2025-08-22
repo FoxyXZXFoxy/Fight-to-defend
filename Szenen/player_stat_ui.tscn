@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://sm00ljj640ts"]
+
+[ext_resource type="Script" uid="uid://culcdw8utubsa" path="res://Scripts/player_stat_ui.gd" id="1_12ric"]
+[ext_resource type="Texture2D" uid="uid://cdba88dowbuo" path="res://assets/horizontal bars/least rounded/progress bar least rounded under.png" id="1_m3l66"]
+[ext_resource type="Texture2D" uid="uid://cwvhmcgqw2swu" path="res://assets/horizontal bars/least rounded/progress bar least rounded over.png" id="2_12ric"]
+[ext_resource type="Texture2D" uid="uid://b8fcd36rujtmy" path="res://assets/horizontal bars/least rounded/progress bar least rounded progress red.png" id="3_jod7s"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12ric")
+
+[node name="hp" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 35.0
+value = 100.0
+texture_under = ExtResource("1_m3l66")
+texture_over = ExtResource("2_12ric")
+texture_progress = ExtResource("3_jod7s")

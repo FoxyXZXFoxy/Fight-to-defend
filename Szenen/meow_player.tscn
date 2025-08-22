@@ -1,7 +1,8 @@
-[gd_scene load_steps=140 format=3 uid="uid://cctsndadiehjt"]
+[gd_scene load_steps=141 format=3 uid="uid://cctsndadiehjt"]
 
 [ext_resource type="Script" uid="uid://d101rjip2wgnr" path="res://Scripts/meow_player.gd" id="1_nje1d"]
 [ext_resource type="Texture2D" uid="uid://btol7dmflb4ie" path="res://assets/Player_meow/Cat fighter.png" id="2_illol"]
+[ext_resource type="PackedScene" uid="uid://sm00ljj640ts" path="res://Szenen/player_stat_ui.tscn" id="3_illol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhun0"]
 atlas = ExtResource("2_illol")
@@ -1063,3 +1064,9 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_cpg84")
+
+[node name="stat_ui" parent="." instance=ExtResource("3_illol")]
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -8.0

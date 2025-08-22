@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
 @onready var sprite = $"AnimatedSprite2D"
+@onready var stat_ui = $stat_ui
 
 var weight = 500
 var speed = 1000
 var in_air = false
+@export var max_hp = 100
+@export var hp = 100
 var kenetic_power: Vector2
 @export var dev_id: int
 
@@ -13,6 +16,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	add_to_group("PLAYERS")
+	stat_ui.player = self
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and event.device == dev_id:
